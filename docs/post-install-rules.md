@@ -1,164 +1,63 @@
-# Post-Install Rules
+# WSF Post Install Notes
 
-Post-installation rules ensure your system is properly configured and secure after the initial setup. These automated and manual procedures help maintain system integrity and optimal performance.
+After installing apps with WSF, it’s crucial to follow these steps to prevent issues like blacklisting, certificate revocation, or app crashes.  
 
-## Automated Post-Install Rules
+---
 
-The system automatically executes several rules after installation to ensure proper configuration:
+## 1. Always Use INSTALL ONLY Profiles for Installation
 
-### Security Hardening
+- When installing apps, use the **INSTALL ONLY** variant of your Config Profile.
+- **Switch back** to your normal profile immediately after installation.
+- **Reason:** INSTALL ONLY profiles temporarily allow app installation without exposing your device to Apple server checks.
 
-Automatic security configurations include:
+---
 
-1. **Default Password Changes**: Force users to change default passwords
-2. **Firewall Configuration**: Enable and configure basic firewall rules
-3. **SSL/TLS Setup**: Install and configure secure communication certificates
-4. **User Account Policies**: Set password complexity and expiration rules
-5. **Audit Logging**: Enable comprehensive system logging
+## 2. Never Enable Two Profiles at Once
 
-### System Optimization
+- Only one Config Profile should be active at any time.
+- **Do not stack WSFConfig + maDNS + CFDNS.**
+- **Consequence:** Multiple active profiles can confuse the device and trigger Apple checks, risking certificate revocation.
 
-Performance optimization rules:
+---
 
-- Database indexing and optimization
-- Cache configuration and sizing
-- Memory allocation adjustments
-- Network buffer optimization
-- Disk I/O performance tuning
+## 3. Airplane Mode & WiFi
 
-## Manual Configuration Tasks
+- When switching profiles or restarting the device:
+  1. **Enable Airplane Mode**
+  2. **Disable WiFi**
+- This prevents the device from contacting Apple servers during vulnerable moments.
 
-### Network Configuration
+---
 
-Complete these network setup tasks:
+## 4. VPN Use
 
-1. **DNS Configuration**
-   - Set primary and secondary DNS servers
-   - Configure domain search paths
-   - Test DNS resolution
+- If using VPNs, follow the **Portal App guide exactly**.
+- Make sure the VPN is configured **before switching profiles or installing apps**.
+- Recommended VPN DNS setups:
+  - CFDNS: `https://4ma0yugkgu.cloudflare-gateway.com/dns-query`
+  - CFDNS+UB: `https://32ev95ur21.cloudflare-gateway.com/dns-query`
 
-2. **Network Time Protocol (NTP)**
-   - Configure NTP servers
-   - Set timezone correctly
-   - Verify time synchronization
+---
 
-3. **Proxy Settings**
-   - Configure HTTP/HTTPS proxy if required
-   - Set proxy authentication credentials
-   - Test internet connectivity
+## 5. Avoid Rebooting or Interrupting Installations
 
-### Backup Configuration
+- **Do not restart your device** during an app installation or profile switch.
+- **Do not disable a profile** while an app is installing.
+- **Consequence:** Rebooting or improper profile handling can trigger Apple’s detection and revoke certificates.
 
-Set up comprehensive backup procedures:
+---
 
-1. **Backup Destinations**
-   - Configure local backup storage
-   - Set up remote backup locations
-   - Test backup connectivity
+## 6. Backup Your Device
 
-2. **Backup Schedules**
-   - Daily incremental backups
-   - Weekly full system backups
-   - Monthly archive backups
+- Always **backup your device** before installing new apps.
+- This ensures you can recover if something goes wrong.
 
-3. **Backup Verification**
-   - Automated backup testing
-   - Restore procedure validation
-   - Backup integrity checking
+---
 
-## Security Compliance Rules
+## 8. Key Reminders
 
-### Access Control Validation
+- Only use official **WSF methods**.
+- Follow all steps carefully—especially **INSTALL ONLY**, Airplane Mode, and single-profile rules.
+- These precautions maintain **device privacy**, prevent blacklisting, and allow apps to run smoothly.
 
-Verify proper access controls are in place:
-
-1. Review default user permissions
-2. Validate administrator account settings
-3. Test service account configurations
-4. Verify file and directory permissions
-5. Check database access controls
-
-### Encryption Standards
-
-Ensure all data is properly encrypted:
-
-- **Data at Rest**: Database and file encryption
-- **Data in Transit**: Network communication encryption
-- **Key Management**: Secure key storage and rotation
-- **Certificate Validation**: Verify all certificates are properly installed
-
-## Monitoring and Alerting Setup
-
-### System Monitoring
-
-Configure comprehensive system monitoring:
-
-1. **Resource Monitoring**
-   - CPU utilization thresholds
-   - Memory usage alerts
-   - Disk space monitoring
-   - Network performance tracking
-
-2. **Application Monitoring**
-   - Service availability checks
-   - Response time monitoring
-   - Error rate tracking
-   - User session monitoring
-
-### Alert Configuration
-
-Set up appropriate alerting mechanisms:
-
-- Email notifications for critical events
-- SMS alerts for emergency situations
-- Dashboard alerts for real-time monitoring
-- Log aggregation and analysis
-
-## Validation Checklist
-
-### Pre-Production Checklist
-
-Complete this checklist before going live:
-
-- [ ] All default passwords changed
-- [ ] SSL certificates installed and validated
-- [ ] Firewall rules configured and tested
-- [ ] Backup system operational
-- [ ] Monitoring and alerting active
-- [ ] User accounts and permissions verified
-- [ ] Integration tests completed successfully
-- [ ] Performance benchmarks met
-- [ ] Security scan completed with no critical issues
-- [ ] Documentation updated and accessible
-
-### Performance Validation
-
-Verify system performance meets requirements:
-
-- **Load Testing**: Test with expected user load
-- **Stress Testing**: Verify behavior under high load
-- **Endurance Testing**: Check long-term stability
-- **Recovery Testing**: Validate disaster recovery procedures
-
-## Maintenance Schedule
-
-### Daily Tasks
-
-- Review system logs for errors
-- Check backup completion status
-- Monitor resource utilization
-- Verify certificate validity
-
-### Weekly Tasks
-
-- Review security alerts and incidents
-- Update system documentation
-- Perform backup restore tests
-- Check for available security updates
-
-### Monthly Tasks
-
-- Comprehensive security assessment
-- Performance optimization review
-- User access review and cleanup
-- Disaster recovery procedure testing
+---
