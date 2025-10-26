@@ -4,8 +4,8 @@ This guide walks you through the process of installing and using enterprise cert
 
 ## Prerequisites
 
-- An iOS device running iOS 10 or later.
-- Access to a DNS box server for validation.
+- An iOS device running iOS 15+ or later.
+- Stable WIFI Connection
 
 ## Types of Revocation
 
