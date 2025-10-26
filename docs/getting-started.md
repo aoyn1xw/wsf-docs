@@ -6,3 +6,8 @@ This guide walks you through the process of installing and using enterprise cert
 
 - An iOS device running iOS 10 or later.
 - Access to a DNS box server for validation.
+
+## Types of Revocation
+
+- **Blacklist**: You are banned from using the certificate.
+- **Revoke**: Apple has taken action against the certificate, rendering it invalid.
