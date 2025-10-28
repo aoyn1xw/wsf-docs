@@ -14,6 +14,6 @@
    - Go to `Settings` &gt; `VPN & Device Management` &gt; `DNS`.
    - Set DNS to "Install Only" while in airplane mode.
 3. **Choose DNS Provider**:
-   - Select a DNS provider from the available options (WSF, Cloudflare, Confere, MadDNS).
+   - Select a DNS from the available options (WSF, Cloudflare,MadDNS).
    - WSF is the most privacy-focused, running completely local.
    - MadDNS is the most popular and supports VPN.
