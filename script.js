@@ -1,3 +1,45 @@
+// Theme management
+class ThemeManager {
+    constructor() {
+        this.themeToggle = document.getElementById('theme-toggle');
+        this.themeIcon = document.querySelector('.theme-icon');
+        this.init();
+    }
+
+    init() {
+        // Load saved theme preference or default to light mode
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            this.enableDarkMode();
+        }
+
+        // Add event listener to toggle button
+        this.themeToggle.addEventListener('click', () => {
+            this.toggleTheme();
+        });
+    }
+
+    toggleTheme() {
+        if (document.body.classList.contains('dark-mode')) {
+            this.disableDarkMode();
+        } else {
+            this.enableDarkMode();
+        }
+    }
+
+    enableDarkMode() {
+        document.body.classList.add('dark-mode');
+        this.themeIcon.textContent = '☀️';
+        localStorage.setItem('theme', 'dark');
+    }
+
+    disableDarkMode() {
+        document.body.classList.remove('dark-mode');
+        this.themeIcon.textContent = '🌙';
+        localStorage.setItem('theme', 'light');
+    }
+}
+
 // Navigation functionality
 class DocumentationSite {
     constructor() {
@@ -70,6 +112,7 @@ class DocumentationSite {
 
 // Initialize the documentation site when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
+    new ThemeManager();
     new DocumentationSite();
 });
 
